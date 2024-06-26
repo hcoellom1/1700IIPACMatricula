@@ -29,7 +29,10 @@
                         <td>{{ $alumno->apellido }}</td>
                         <td>{{ $alumno->correo }}</td>
                         <td>
-                            eliminar
+                            <a href={{route('alumno.editar', $alumno->numeroCuenta)}}>editar</a>
+                        </td>
+                        <td>
+                            <a href={{route('alumno.eliminar', $alumno->numeroCuenta)}}>eliminar</a>
                         </td>
                     </tr>
                 @endforeach

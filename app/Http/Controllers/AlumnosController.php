@@ -31,4 +31,34 @@ class AlumnosController extends Controller
         $nvoAlumno->save();
         return redirect('/alumnos/mostrar');
     }
+
+    public function editar($id){
+        $alumnoEditar = Alumno::find($id);
+        return view('editaralumno', compact('alumnoEditar'));
+
+    }
+
+    public function guardarEdicion(Request $request, $id){
+        $alumnoEditar = Alumno::find($id);
+        $alumnoEditar->nombre = $request->name;
+        $alumnoEditar->apellido = $request->apellido;
+        $alumnoEditar->correo = $request->correo;
+        $alumnoEditar->telefono = $request->telefono;
+        $alumnoEditar->save();
+
+        return redirect('/alumnos/mostrar');
+    }
+
+    public function eliminar($id){
+        $alumnoEliminar = Alumno::find($id);
+        return view('eliminarAlumno', compact('alumnoEliminar'));
+    }
+
+    public function destroy($id){
+        $alumnoEliminar = Alumno::find($id);
+        $alumnoEliminar->delete();
+
+        return redirect('/alumnos/mostrar');
+    }
+    
 }
